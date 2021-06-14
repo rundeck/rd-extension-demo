@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'org.rundeck.cli.demo.ext'
-version '0.1'
+version = scmVersion.version
 
 sourceCompatibility = 1.8
 
