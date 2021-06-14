@@ -27,3 +27,39 @@ You can try this extension after building it using `rd` version 1.2 or later:
        scripting2 - demonstrates typed data output for yaml/json scripting
     
     Use "rd ext demo [command] help" to get help on any command.
+
+# Picocli 
+
+**requires rd version 1.2.5 or later**
+
+The Pico command demonstrates using Picocli to handle command argument and subcommand parsing
+
+The build uses the 'shadow' gradle plugin to bundle Picocli into the extension jar so that it can be used standalone.
+
+```
+$ RD_EXT_DIR=$PWD/build/libs rd ext
+A command was expected: rd ext [command]
+
+ext: a test subcommand
+
+Available commands:
+
+   demo - subcommand demo
+   pico - Demo use of picocli.
+
+Use "rd ext [command] help" to get help on any command.
+$ RD_EXT_DIR=$PWD/build/libs rd ext ext pico
+What is your name? use --name <yourname>.  Or use wave to just wave at things
+$ RD_EXT_DIR=$PWD/build/libs rd ext pico -n bob   
+Name is bob
+$ RD_EXT_DIR=$PWD/build/libs rd ext pico wave  
+Missing required option '--thingies=<thingies>'
+Usage: pico wave -t=<thingies> [-t=<thingies>]...
+wazzup
+  -t, --thingies=<thingies>
+
+$ RD_EXT_DIR=$PWD/build/libs rd ext pico wave -t dirt -t sky
+*waves at*
+* dirt
+* sky
+```
